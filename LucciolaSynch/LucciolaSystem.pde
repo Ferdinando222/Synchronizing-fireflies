@@ -53,7 +53,7 @@ class LucciolaSystem{
       float distance = sqrt(dx*dx + dy*dy);
       if (distance <= 100) {  // 20 is the threshold value
         // set new frequency for firefly
-      lucciole.get(i).omega = random(-1, 1);
+      lucciole.get(i).omega = random(-0.1, 0.1);
       }
     }
   }
