@@ -1,14 +1,14 @@
 class LucciolaSystem{
   int n;
   ArrayList<Lucciola> lucciole = new ArrayList<Lucciola>();
-  float distanceThreshold = 300;
+  float distanceThreshold = 100;
   float K;
   ArrayList neighbors = new ArrayList();
   LucciolaSystem(int n,float K){
     this.n = n;
     this.K = K;
     for(int i=0;i<n;i++){
-      lucciole.add(new Lucciola(random(width),random(height),random(20,25),random(TWO_PI),random(-0.1,0.1)));
+      lucciole.add(new Lucciola(random(width),random(height),random(20,25),random(TWO_PI),random(-0.5,0.5)));
     } 
     println(lucciole.get(1));
   }
@@ -53,7 +53,8 @@ class LucciolaSystem{
       float distance = sqrt(dx*dx + dy*dy);
       if (distance <= 100) {  // 20 is the threshold value
         // set new frequency for firefly
-      lucciole.get(i).omega = random(-0.1, 0.1);
+      lucciole.get(i).omega = random(-0.8, 0.8);
+      lucciole.get(i).phi = random(TWO_PI);
       }
     }
   }
@@ -66,12 +67,16 @@ class LucciolaSystem{
     
   void add_firefly(int n, int value){
     for(int i = n+1; i<=value;i++){
-      lucciole.add(new Lucciola(random(width),random(height),random(20,25),random(TWO_PI),random(-0.1,0.1)));
+      lucciole.add(new Lucciola(random(width),random(height),random(20,25),random(TWO_PI),random(-0.5,0.5)));
     }
   }
   
   void change_coupling(float k){
     this.K = k;
+  }
+  
+  void change_distance(float dist){
+    this.distanceThreshold = dist;
   }
 
 }
